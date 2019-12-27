@@ -1,0 +1,191 @@
+﻿<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>你要的满天星</title>
+
+  <script src="js/jquery.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      background: #22313f;
+    }
+
+    #starsBox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      opacity: .5;
+    }
+
+    #starsBox span {
+      display: inline-block;
+      width: auto;
+      position: absolute;
+      border-radius: 100%;
+      transition: 100s linear;
+    }
+
+    p {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      right: 0;
+      text-align: center;
+      transform: translateY(-50%);
+      font-size: 40px;
+      font-weight: 900;
+      color: white;
+      text-shadow: 0 0 50px black;
+      text-transform: uppercase;
+      font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+      letter-spacing: 5px;
+    }
+
+    p>span {
+      display: block;
+      font-size: 12px;
+      color: #bdc3c7;
+      margin-top: 30px;
+      font-weight: 100;
+      text-shadow: 0 0 50px black;
+      letter-spacing: 3px;
+    }
+
+    p>span>a {
+      font-weight: 700;
+      text-decoration: none;
+      color: #d64541;
+      padding-bottom: 2px;
+      border-bottom: 0px solid #d64541;
+      transition: 0.5s;
+    }
+
+    p>span>a:hover {
+      padding-bottom: 5px;
+      border-bottom: 2px solid #d64541;
+    }
+
+    .span_text {
+      min-width: 100px;
+      line-height: 10px;
+      color: whitesmoke;
+
+    }
+
+    .blink {
+      animation: blink 1.5s 3 steps(2) !important;
+
+    }
+
+    @keyframes blink {
+      50% {
+        color: transparent;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="starsBox"></div>
+
+  <p id='some_talk'>你要的满天星，没有你眼里的星好看。</p>
+
+  <script type="text/javascript">
+    console.warn([
+      '                   _ooOoo_',
+      '                  o8888888o',
+      '                  88" . "88',
+      '                  (| -_- |)',
+      '                  O\\  =  /O',
+      "               ____/`---'\\____",
+      "             .'  \\\\|     |//  `.",
+      '            /  \\\\|||  :  |||//  \\',
+      '           /  _||||| -:- |||||-  \\',
+      '           |   | \\\\\\  -  /// |   |',
+      "           | \\_|  ''\\---/''  |   |",
+      '           \\  .-\\__  `-`  ___/-. /',
+      "         ___`. .'  /--.--\\  `. . __",
+      "      .\"\" '<  `.___\\_<|>_/___.'  >'\"\".",
+      '     | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |',
+      '     \\  \\ `-.   \\_ __\\ /__ _/   .-` /  /',
+      "======`-.____`-.___\\_____/___.-`____.-'======",
+      "                   `=---='",
+      '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^',
+      '         佛祖保佑       永无BUG '
+    ].join('\n'))
+    setTimeout(() => {
+      $('#some_talk').hide()
+      console.log('我不见了')
+    }, 3000)
+
+
+
+
+    var cols = ['#f5d76e', '#f7ca18', '#f4d03f', '#ececec', '#ecf0f1', '#a2ded0'];
+    var stars = 250;
+
+    for (var i = 0; i <= stars; i++) {
+
+
+      var size = Math.random() * 3;
+      var color = cols[parseInt(Math.random() * 4)];
+
+      $('#starsBox').prepend('<span class=blink  id=starsBox' + i + '   style=" width: ' + size + 'px; height: ' +
+        size +
+        'px; top: ' + Math.random() *
+        100 + '%; left: ' + Math.random() * 100 + '%; background: ' + color + '; box-shadow: 0 0 ' + Math.random() *
+        10 + 'px' + color + ';"></span>');
+
+
+      //星星hover
+      let iconArr = ['❤️', '🍰', '💍', '🍙', '🍔', '🍜', '🍭', '🌟', '🍩', '🍬']
+      let textArr = ['呆鹅', '跨年啦', '快乐', '！！！', '0 error', '想你啊', '好事多磨', '☔️', '多喝热水🌈', '多吃零食']
+
+      let iconIndex = parseInt(Math.random() * 10)
+
+      let h_id = `starsBox${i}`
+      let nowdom = document.getElementById(h_id)
+      nowdom.addEventListener("mousemove", function (event) {
+        nowdom.innerHTML = `<span >${iconArr[iconIndex]}</span>`;
+
+        // 在短暂的延时之后重置颜色
+        setTimeout(function () {
+          nowdom.innerHTML = `<span class='span_text'>${textArr[iconIndex]}</span>`;
+        }, 10000);
+        setTimeout(function () {
+          nowdom.innerHTML = `<span class='span_text'></span>`;
+        }, 20000);
+
+
+      });
+
+    };
+
+
+    setTimeout(function () {
+      $('#starsBox span').each(function () {
+        $(this).css('top', Math.random() * 100 + '%').css('left', Math.random() * 100 + '%');
+      });
+    }, 1);
+
+    setInterval(function () {
+      $('#starsBox span').each(function () {
+        $(this).css('top', Math.random() * 100 + '%').css('left', Math.random() * 100 + '%');
+      });
+    }, 100000);
+  </script>
+
+</body>
+
+</html>

@@ -3,9 +3,11 @@
 
 <head>
   <meta charset="utf-8">
-  <title>你要的满天星</title>
-
+  <title>你要的满天星🌟</title>
+  <!-- <link rel="icon" type="image/x-icon" href="icon.ico" /> -->
   <script src="js/jquery.min.js"></script>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=0.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
   <style>
     * {
@@ -84,6 +86,7 @@
     }
 
     .blink {
+      mix-blend-mode: lighten;
       animation: blink 1.5s 3 steps(2) !important;
 
     }
@@ -147,16 +150,30 @@
         100 + '%; left: ' + Math.random() * 100 + '%; background: ' + color + '; box-shadow: 0 0 ' + Math.random() *
         10 + 'px' + color + ';"></span>');
 
-
       //星星hover
       let iconArr = ['❤️', '🍰', '💍', '🍙', '🍔', '🍜', '🍭', '🌟', '🍩', '🍬']
-      let textArr = ['呆鹅', '跨年啦', '快乐', '！！！', '0 error', '想你啊', '好事多磨', '☔️', '多喝热水🌈', '多吃零食']
+      let textArr = ['呆鹅', '跨年啦', '快乐', '！！！', '0 error', '想你啊', '好事多磨', '🧚‍♀️', '多喝热水🌈', '多吃零食']
 
       let iconIndex = parseInt(Math.random() * 10)
 
       let h_id = `starsBox${i}`
       let nowdom = document.getElementById(h_id)
       nowdom.addEventListener("mousemove", function (event) {
+        nowdom.innerHTML = `<span >${iconArr[iconIndex]}</span>`;
+
+        // 在短暂的延时之后重置颜色
+        setTimeout(function () {
+          nowdom.innerHTML = `<span class='span_text'>${textArr[iconIndex]}</span>`;
+        }, 10000);
+        setTimeout(function () {
+          nowdom.innerHTML = `<span class='span_text'></span>`;
+        }, 20000);
+
+
+      });
+
+      //移动端
+      nowdom.addEventListener("swipe", function (event) {
         nowdom.innerHTML = `<span >${iconArr[iconIndex]}</span>`;
 
         // 在短暂的延时之后重置颜色

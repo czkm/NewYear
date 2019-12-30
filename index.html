@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>你要的满天星🌟</title>
-  <!-- <link rel="icon" type="image/x-icon" href="icon.ico" /> -->
+  <link rel="icon" type="image/x-icon" href="icon.ico" />
   <script src="js/jquery.min.js"></script>
   <meta name="viewport"
     content="width=device-width, initial-scale=0.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
@@ -45,7 +45,7 @@
       right: 0;
       text-align: center;
       transform: translateY(-50%);
-      font-size: 40px;
+      font-size: 35px;
       font-weight: 900;
       color: white;
       text-shadow: 0 0 50px black;
@@ -102,7 +102,8 @@
 <body>
   <div id="starsBox"></div>
 
-  <p id='some_talk'>你要的满天星，没有你眼里的星好看。</p>
+  <p id='some_talk'>你要的满天星，不如你眼中星辰。</p>
+  <p id='some_talk1'>点我点我！</p>
 
   <script type="text/javascript">
     console.warn([
@@ -127,12 +128,20 @@
       '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^',
       '         佛祖保佑       永无BUG '
     ].join('\n'))
+    $('#some_talk1').hide()
+
     setTimeout(() => {
       $('#some_talk').hide()
       console.log('我不见了')
     }, 3000)
 
-
+    setTimeout(() => {
+      $('#some_talk1').show()
+      setTimeout(() => {
+        $('#some_talk1').hide()
+        console.log('点我点我～')
+      }, 1000)
+    }, 4000)
 
 
     var cols = ['#f5d76e', '#f7ca18', '#f4d03f', '#ececec', '#ecf0f1', '#a2ded0'];
